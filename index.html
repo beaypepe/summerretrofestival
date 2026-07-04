@@ -10,14 +10,24 @@
   <main class="player">
     <img src="retro.jpg" alt="Carátula retro" class="cover" />
 
-    <h1 class="title">Summer</h1>
-
     <audio id="audio" src="summer.mp3" preload="metadata"></audio>
 
     <div class="controls">
-      <button id="playBtn" class="btn" aria-label="Reproducir">▶</button>
-      <button id="pauseBtn" class="btn" aria-label="Pausar">⏸</button>
+      <button id="playPauseBtn" class="btn" aria-label="Reproducir">▶</button>
+      <div class="timeline">
+        <input type="range" id="seek" class="seek" min="0" max="100" value="0" step="0.1" aria-label="Buscar posición de la canción" />
+        <div class="time-row">
+          <span id="current">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+      </div>
     </div>
+
+    <p class="footer-text">
+      <a href="https://coord.info/GCBT5JW" target="_blank" rel="noopener noreferrer">Summer Retro Festival</a>
+      - un caché de
+      <a href="https://beaypepe.com" target="_blank" rel="noopener noreferrer">BeayPepe</a>
+    </p>
   </main>
 
   <script src="script.js"></script>

@@ -16,7 +16,7 @@ body {
 
 .player {
   width: 100%;
-  max-width: 420px;
+  max-width: 720px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
@@ -30,36 +30,87 @@ body {
   aspect-ratio: 1800 / 1029;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   filter: saturate(1.1) contrast(1.05);
 }
 
-.title {
-  color: #ffd86b;
-  font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 12px rgba(255, 216, 107, 0.4);
-}
-
+/* --- Fila controles + barra de tiempo --- */
 .controls {
   display: flex;
+  align-items: center;
   gap: 1rem;
-  justify-content: center;
+  width: 100%;
 }
 
+.timeline {
+  flex: 1;          /* la barra ocupa todo el espacio que deja el botón */
+  min-width: 0;     /* permite que el input se ajuste correctamente */
+}
+
+.seek {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  outline: none;
+  background: linear-gradient(to right,
+    #ff7eb3 0%,
+    #b14aff var(--progress, 0%),
+    rgba(255, 255, 255, 0.15) var(--progress, 0%),
+    rgba(255, 255, 255, 0.15) 100%);
+}
+
+/* Selector (thumb) en Chrome/Safari/Edge */
+.seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffd86b;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255, 216, 107, 0.7);
+  cursor: pointer;
+}
+
+/* Selector en Firefox */
+.seek::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffd86b;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255, 216, 107, 0.7);
+  cursor: pointer;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* --- Botón --- */
 .btn {
-  width: 72px;
-  height: 72px;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: #fff;
   cursor: pointer;
   background: linear-gradient(145deg, #ff7eb3, #b14aff);
   box-shadow: 0 6px 18px rgba(177, 74, 255, 0.45);
   transition: transform 0.12s ease, filter 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:hover {
@@ -73,4 +124,22 @@ body {
 .btn:focus-visible {
   outline: 3px solid #ffd86b;
   outline-offset: 3px;
+}
+
+/* --- Texto inferior con enlaces --- */
+.footer-text {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-text a {
+  color: #ffd86b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
 }
