@@ -12,14 +12,14 @@
 
     <audio id="audio" src="summer.mp3" preload="metadata"></audio>
 
-    <div class="controls">
-      <button id="playPauseBtn" class="btn" aria-label="Reproducir">▶</button>
-      <div class="timeline">
+    <div class="player-controls">
+      <div class="progress-row">
+        <button id="playPauseBtn" class="btn" aria-label="Reproducir">▶</button>
         <input type="range" id="seek" class="seek" min="0" max="100" value="0" step="0.1" aria-label="Buscar posición de la canción" />
-        <div class="time-row">
-          <span id="current">0:00</span>
-          <span id="duration">0:00</span>
-        </div>
+      </div>
+      <div class="time-row">
+        <span id="current">0:00</span>
+        <span id="duration">0:00</span>
       </div>
     </div>
 

@@ -34,23 +34,24 @@ body {
   filter: saturate(1.1) contrast(1.05);
 }
 
-/* --- Fila controles + barra de tiempo --- */
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
+/* --- Controles: botón (solo icono) + barra de tiempo --- */
+.player-controls {
+  /* Variables para alinear los tiempos exactamente bajo la barra */
+  --btn-w: 34px;
+  --row-gap: 0.85rem;
 }
 
-.timeline {
-  flex: 1;          /* la barra ocupa todo el espacio que deja el botón */
-  min-width: 0;     /* permite que el input se ajuste correctamente */
+.progress-row {
+  display: flex;
+  align-items: center;   /* alinea el icono con la LÍNEA de la barra */
+  gap: var(--row-gap);
 }
 
 .seek {
+  flex: 1;           /* la barra ocupa todo el espacio que deja el botón */
+  min-width: 0;
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
   height: 8px;
   border-radius: 999px;
   cursor: pointer;
@@ -86,44 +87,43 @@ body {
   cursor: pointer;
 }
 
+/* Tiempos: indentados para quedar justo bajo la barra (no bajo el botón) */
 .time-row {
   display: flex;
   justify-content: space-between;
   margin-top: 0.6rem;
+  padding-left: calc(var(--btn-w) + var(--row-gap));
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.85rem;
   letter-spacing: 1px;
 }
 
-/* --- Botón --- */
+/* --- Botón: SOLO el icono, sin círculo --- */
 .btn {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: var(--btn-w);       /* ancho fijo para no moverse al cambiar ▶ / ⏸ */
+  background: none;
   border: none;
-  font-size: 1.3rem;
-  color: #fff;
+  padding: 0;
+  line-height: 1;
+  font-size: 1.7rem;
+  color: #ffd86b;            /* dorado, combina con el selector de la barra */
   cursor: pointer;
-  background: linear-gradient(145deg, #ff7eb3, #b14aff);
-  box-shadow: 0 6px 18px rgba(177, 74, 255, 0.45);
-  transition: transform 0.12s ease, filter 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: color 0.2s ease, transform 0.12s ease;
 }
 
 .btn:hover {
-  filter: brightness(1.1);
+  color: #ffffff;
 }
 
 .btn:active {
-  transform: scale(0.92);
+  transform: scale(0.9);
 }
 
 .btn:focus-visible {
-  outline: 3px solid #ffd86b;
-  outline-offset: 3px;
+  outline: 2px solid #ffd86b;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* --- Texto inferior con enlaces --- */
