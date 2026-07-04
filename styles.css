@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+  background: radial-gradient(circle at 50% 30%, #2a1a3e 0%, #120a1f 70%);
+  padding: 1rem;
+}
+
+.player {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cover {
+  width: 100%;
+  aspect-ratio: 1800 / 1029;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.title {
+  color: #ffd86b;
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 12px rgba(255, 216, 107, 0.4);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(145deg, #ff7eb3, #b14aff);
+  box-shadow: 0 6px 18px rgba(177, 74, 255, 0.45);
+  transition: transform 0.12s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: scale(0.92);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #ffd86b;
+  outline-offset: 3px;
+}
