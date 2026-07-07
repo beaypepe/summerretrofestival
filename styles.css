@@ -12,12 +12,27 @@ body {
   font-family: "Courier New", Courier, monospace;
   background: radial-gradient(circle at 50% 30%, #2a1a3e 0%, #120a1f 70%);
   padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* --- Canvas de fondo (efecto animado) --- */
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;   /* no interfiere con los clics */
 }
 
 .player {
+  position: relative;
+  z-index: 1;             /* el reproductor queda por encima del canvas */
   width: 100%;
   max-width: 720px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(18, 10, 31, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 1.5rem;
@@ -36,7 +51,6 @@ body {
 
 /* --- Controles: botón (solo icono) + barra de tiempo --- */
 .player-controls {
-  /* Variables para alinear los tiempos exactamente bajo la barra */
   --btn-w: 34px;
   --row-gap: 0.85rem;
 }
