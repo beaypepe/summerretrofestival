@@ -20,12 +20,20 @@ function formatTime(sec) {
   return m + ":" + (s < 10 ? "0" + s : s);
 }
 
-// Pinta el progreso en la barra y actualiza el tiempo actual
+// Mientras el usuario arrastra el círculo, evitamos que timeupdate lo pelee
+let userSeeking = false;
+seek.addEventListener("pointerdown", () => { userSeeking = true; });
+window.addEventListener("pointerup", () => { userSeeking = false; });
+
+// Pinta el progreso en la barra, mueve el círculo y actualiza el tiempo actual
 function updateProgress() {
   if (!audio.duration) return;
   const pct = (audio.currentTime / audio.duration) * 100;
   seek.style.setProperty("--progress", pct + "%");
   currentEl.textContent = formatTime(audio.currentTime);
+  // El círculo (thumb) debe acompañar siempre al final de la barra rosa,
+  // salvo mientras el usuario lo está arrastrando manualmente
+  if (!userSeeking) seek.value = audio.currentTime;
 }
 
 // Un único botón: si está parado, reproduce; si suena, pausa
